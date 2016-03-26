@@ -16,6 +16,14 @@
     Because any particular user can only have one fork of a repository,
     but instructors frequently need to work on several workshops at once.
 
+*   *Why does the workshop repository name have to follow the `YYYY-MM-DD-site` pattern?*
+
+    This makes it easy for coordinators to track workshops in
+    spreadsheets for instructor training.
+    There are [plans to move that coordination into AMY][amy-training],
+    but until that happens this pattern makes it easy to sort workshops
+    by date without requiring an additional start-date column.
+
 *   *Why use the `gh-pages` branch instead of `master`?
 
     Because [GitHub automatically publishes `gh-pages`](https://help.github.com/articles/creating-project-pages-manually/)
@@ -37,8 +45,6 @@
 
     Go ahead,
     but you *must* have the variables described in [CUSTOMIZATION.md](CUSTOMIZATION.md).
-    Please make sure to run `tools/check.py` after adding or changing variables
-    to make sure that our main website will understand your changes.
 
 *   *What is the "Windows installer"?*
 
@@ -181,3 +187,9 @@
     If you're using a browser plugin like [HTTPS Everywhere](https://www.eff.org/https-everywhere)
     you will need to disable it for your workshop's site.
     We are presently (January 2015) working to get HTTPS working properly on our website.
+
+*   *Help, my github.io website is not updating!*
+
+    Ensure that strings in the index.html header are enclosed in quotations `"`. Special characters such as `"&"` may render correctly on your local machine but cause rendering to fail (silently?) on GitHub.
+
+[amy-training]: https://github.com/numfocus/gsoc/blob/0f76b09e1147d9dc5d55c4fb822639740fdaf58f/2016/ideas-list-swc.md#manage-workflow-for-instructor-training

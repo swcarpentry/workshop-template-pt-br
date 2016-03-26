@@ -1,27 +1,34 @@
 ---
-layout: workshop
-root: .
-venue: FIXME      # brief name of host site
-address: FIXME    # street address of home location
-country: FIXME    # country (hyphenated if need be, like 'United-Kingdom')
-language: FIXME   # language code like 'en' or 'fr'
-latlng: FIXME     # fractional latitude and longitude like 41.7901128,-87.6007318
-humandate: FIXME  # use the format 'Feb 17-18, 2020' (without the quotes)
-humantime: FIXME  # use the format '9:00 am - 4:30 pm' (without the quotes)
-startdate: FIXME  # use YYYY-MM-DD format like 2015-01-01
-enddate: FIXME    # use YYYY-MM-DD format like 2015-01-02
-instructor: FIXME # list of names like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: FIXME     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-contact: FIXME    # contact email address for workshop organizer
-etherpad:   # optional (insert the URL for your Etherpad if you're using one)
-eventbrite: # optional (delete this if not used, otherwise uncomment and provide 1234567890AB key for Eventbrite registration)
+layout: workshop      # DON'T CHANGE THIS.
+root: .               # DON'T CHANGE THIS.
+venue: "FIXME"        # brief name of host site without address (e.g., "Euphoric State University")
+address: "FIXME"      # street address of workshop (e.g., "123 Forth Street, Blimingen, Euphoria")
+country: "FIXME"      # country (lowercase two-letter ISO code such as "fr" - see https://en.wikipedia.org/wiki/ISO_3166-1)
+language: "FIXME"     # language (lowercase two-letter ISO code such as "fr" - see https://en.wikipedia.org/wiki/ISO_639-1)
+latlng: "FIXME"       # fractional latitude and longitude (e.g., "41.7901128,-87.6007318"; you can use http://www.latlong.net/)
+humandate: "FIXME"    # human-readable date (e.g., "Feb 17-18, 2020")
+humantime: "FIXME"    # human-readable time (e.g., "9:00 am - 4:30 pm")
+startdate: FIXME      # use YYYY-MM-DD format like 2015-01-01
+enddate: FIXME        # use YYYY-MM-DD format like 2015-01-02
+instructor: ["FIXME"] # list of names like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+helper: ["FIXME"]     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+contact: "FIXME"      # contact email address for workshop organizer, such as "grace@hopper.org"
+etherpad:         # optional (insert the URL for your Etherpad if you're using one)
+eventbrite:       # optional (insert the alphanumeric key for Eventbrite registration, e.g., "1234567890AB")
 ---
+
+
+<!-- See instructions in the comments below for how to edit specific sections of this workshop template. -->
+
+
+
 <!--
   HEADER
 
-  Edit the values in the block above to be appropriate for your
-  workshop.  Run 'tools/check' *before* committing to make sure that
-  changes are good.
+  Edit the values in the block above to be appropriate for your workshop.
+  If the value is not 'true', 'false', 'null', or a number, please use
+  double quotation marks around the value, unless specified otherwise.
+  And run 'tools/check' *before* committing to make sure that changes are good.
 -->
 
 <!--
@@ -42,8 +49,12 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
 </iframe>
 {% endif %}
 
-<h2>Informações gerais</h2>
+<h4>This is the workshop template.  Use it to create your own website.
+Delete this line and email the link to your workshop page to admin@software-carpentry.org.
+If this is a self organized workshop, please be sure to include any other details
+Software Carpentry staff may need to know in your email.</h4>
 
+<h2 id="general">Informações gerais</h2>
 <!--
   INTRODUCTION
 
@@ -74,9 +85,11 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   Explain who your audience is.  (In particular, tell readers if the
   workshop is only open to people from a particular institution.
 -->
-<p>
+<p id="who">
   <strong>Quem:</strong>
   Este curso é destinado alunos de graduação, pós-graduação e outros pesquisadores.
+  <strong>Você não precisa ter nenhum conhecimento prévio das ferramentas que
+      serão apresentadas nesse workshop.</strong>
 </p>
 
 <!--
@@ -88,7 +101,7 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   address.
 -->
 {% if page.latlng %}
-<p>
+<p id="where">
   <strong>Onde:</strong>
   {{page.address}}.
   Obtenha direções em
@@ -105,11 +118,44 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
 -->
 <p>
   <strong>Requerimentos:</strong>
-  Participantes devem trazer seu próprio notebook
-  com os programas listados <a href="#setup">abaixo</a> já instalados.
+  Participantes devem trazer um notebook (preferencialmente aquele que usam
+  diariamente) que possua Windows, Mac OS X ou GNU/Linux como sistema
+  operacional (tablets, Chromebook e outros dispositivos similares não servirão)
+  no qual possuam privilégios administrativos (no qual possam instalar novos
+  programas).
+  Participantes devem instalar no notebook que utilizarão os programas listados <a href="#setup">abaixo</a>
+  antes do início do workshop.
   Participantes também precisam aceitar
   o <a href="{{site.swc_site}}/conduct.html">Código de Conduta</a>.
   da Software Carpentry.
+</p>
+
+<!--
+  ACCESSIBILITY
+
+  Modify the block below if there are any barriers to accessibility or
+  special instructions.
+-->
+<p id="accessibility">
+  <strong>Accessibility:</strong> We are committed to making this workshop
+  accessible to everybody.
+  The workshop organisers have checked that:
+</p>
+<ul>
+  <li>The room is wheelchair / scooter accessible.</li>
+  <li>Accessible restrooms are available.</li>
+</ul>
+<p>
+  Materials will be provided in advance of the workshop and
+  large-print handouts are available if needed by notifying the
+  organizers in advance.  If we can help making learning easier for
+  you (e.g. sign-language interpreters, lactation facilities) please
+  {% if page.contact %}
+    <a href='mailto:{{page.contact}}'>get in touch</a>
+  {% else %}
+    <a href='mailto:{{site.contact}}'>get in touch</a>
+  {% endif %}
+  and we will attempt to provide them. 
 </p>
 
 <!--
@@ -119,7 +165,7 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   isn't set in the header, the Software Carpentry admin address is
   used.
 -->
-<p>
+<p id="contact">
   <strong>Contato</strong>:
   Por favor, envie um email para
   {% if page.contact %}
@@ -139,7 +185,15 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   to match your plans.  You may also want to change 'Day 1' and 'Day
   2' to be actual dates or days of the week.
 -->
-<h2>Programação</h2>
+<h2 id="schedule">Programação</h2>
+
+<!-- DO NOT EDIT SURVEY LINKS -->
+<!--
+<p><em>Formulários</em></p>
+<p>Please be sure to complete these surveys before and after the workshop.</p>
+<p><a href='{{ site.swc_pre_survey }}{{ site.github.project_title }}'>Pre-workshop Survey</a></p>
+<p><a href='{{ site.swc_post_survey }}{{ site.github.project_title }}'>Post-workshop Survey</a></p>
+-->
 
 <div class="row-fluid">
   <div class="span6">
@@ -171,13 +225,13 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   advance or on the first day; either way, make sure you push changes
   to GitHub after you have its URL.  To create an Etherpad, go to
 
-      http://etherpad.mozilla.org/YYYY-MM-DD-site
+      http://pad.software-carpentry.org/YYYY-MM-DD-site
 
-  where 'YYYY-MM-DD-site' is the identifier for your workshop (e.g.,
-  '2015-06-10-esu'.
+  where 'YYYY-MM-DD-site' is the identifier for your workshop,
+  e.g., '2015-06-10-esu'.
 -->
 {% if page.etherpad %}
-<p>
+<p id="etherpad">
   <strong>Etherpad:</strong> <a href="{{page.etherpad}}">{{page.etherpad}}</a>.
   <br/>
   Iremos utilizar o Etherpad listado acima para chat,
@@ -204,11 +258,11 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   please preview your site before committing, and make sure to run
   'tools/check' as well.
 -->
-<h2>Resumo</h2>
+<h2 id="syllabus">Resumo</h2>
 
 <div class="row">
   <div class="col-md-6">
-    <h3>Unix Shell</h3>
+    <h3 id="syllabus-shell">Unix Shell</h3>
     <ul>
       <li>Arquivos e diretórios</li>
       <li>Histórico e tab completion</li>
@@ -220,7 +274,7 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     </ul>
   </div>
   <div class="col-md-6">
-    <h3>Programação em Python</h3>
+    <h3 id="syllabus-python">Programação em Python</h3>
     <ul>
       <li>Usando bibliotecas/pacotes</li>
       <li>Trabalhando com vetores</li>
@@ -230,11 +284,12 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
       <li>Programação defensiva</li>
       <li>Usando Python pela linha de comando</li>
       <li><a href="{{site.swc_lessons}}/ref/03-python.html">Referências...</a></li>
+=======
     </ul>
   </div>
   <!--
   <div class="col-md-6">
-    <h3>Programming in R</h3>
+    <h3 id="syllabus-r">Programação me R</h3>
     <ul>
       <li>Trabalhando com vetores e data frames</li>
       <li>Lendo e visualizando dados</li>
@@ -245,11 +300,24 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     </ul>
   </div>
   -->
+  <!--
+  <div class="col-md-6">
+    <h3 id="syllabus-matlab">Programando em MATLAB</h3>
+    <ul>
+      <li>Working with arrays</li>
+      <li>Reading and plotting data</li>
+      <li>Creating and using functions</li>
+      <li>Loops and conditionals</li>
+      <li>Defensive programming</li>
+      <li><a href="{{site.swc_githubio}}/matlab-novice-inflammation/reference.html">Reference...</a></li>
+     </ul>
+   </div>
+   -->
 </div>
 
 <div class="row">
   <div class="col-md-6">
-    <h3>Controle de versão com Git</h3>
+    <h3 id="syllabus-git">Controle de versão com Git</h3>
     <ul>
       <li>Criação de repositórios</li>
       <li>Salvando mudanças de arquivos: <code>add</code>, <code>commit</code>, ...</li>
@@ -263,7 +331,7 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     </ul>
   </div>
   <div class="col-md-6">
-    <h3>Gerenciando dados com SQL</h3>
+    <h3 id="syllabus-sql">Gerenciando dados com SQL</h3>
     <ul>
       <li>Lendo e ordenando dados</li>
       <li>Filtrando com <code>where</code></li>
@@ -317,22 +385,55 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
   <div class="row">
     <div class="col-md-4">
       <h4 id="shell-windows">Windows</h4>
-      <p>
-        Baixe <a href="https://git-for-windows.github.io/">o instalador</a>
-        do Git para Windows e execute-o.
-        <strong>
-          Importante: na 6ª página do instalador
-          (a página com o título "Configuring the terminal emulator...")
-          selecione "Use Windows' default console window".
-          Se você esquecer de selecionar essa opção
-          os programas que você precisa para o workshop
-          não serão instalados adequadamente.
-          Se isso acontecer, execute novamente o instalador
-          selecionando a opção apropriada dessa vez.
-        </strong>
-        Após a instalação você terá disponível no seu computador
-        tanto o Git como o Bash.
-      </p>
+      <ol>
+        <li>Baixe <a href="https://git-for-windows.github.io/">o instalador</a> do Git para Windows.</li>
+        <li>Execute o instalador e siga os passos abaixo:
+          <ol>
+            <!-- Git 2.6.1 Setup -->
+            <!-- Welcome to the Git Setup Wizard -->
+            <li>Selecione "Avançar".</li>
+            <!-- Information -->
+            <li>Selecione "Avançar".</li>
+            <!-- Select Destination Location -->
+            <li>Selecione "Avançar".</li>
+            <!-- Select Components -->
+            <li>Selecione "Avançar".</li>
+            <!-- Select Start Menu Folder -->
+            <li>Selecione "Avançar".</li>
+            <!-- Adjusting your PATH environment -->
+            <li>
+              <strong>
+                Selecione "Usar Git pela Prompt de Comando do Windows" e
+                selecione "Avançar".
+              </strong>
+                Se você esquecer desse passo alguns programas que você utilizará
+                no workshop não funcionaram corretamente. Se isso acontecer
+                execute o instalador novamente e selecione a opção apropriada.
+            </li>
+            <!-- Configuring the line ending conversions -->
+            <li>
+              Selecione "Avançar".
+              <strong>
+                Mantenha "Checkout Windows-style, commit Unix-style line
+                endings" selecionado.
+              </strong>
+            </li>
+            <!-- Configuring the terminal emulator to use with Git Bash -->
+            <li>
+              <strong>
+                Selecione "Use Windows' default console window" e selecione
+                "Avançar".
+              </strong>
+            </li>
+            <!-- Configuring experimental performance tweaks -->
+            <li>Selecione "Avançar".</li>
+            <!-- Installing -->
+            <!-- Completing the Git Setup Wizard -->
+            <li>Selecione "Encerrar".</li>
+          </ol>
+        </li>
+      </ol>
+      <p>Isso irá prover o Git e o Bash no programa chamado Git Bash.</p>
     </div>
     <div class="col-md-4">
       <h4 id="shell-macosx">Mac OS X</h4>
@@ -428,9 +529,7 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
         nano é um editor de texto básico
         e o que os instrutores utilizam por padrão nesse workshop.
         Para instalá-lo,
-        baixe o <a
-          href="http://files.software-carpentry.org/SWCarpentryInstaller.exe">Software
-          Carpentry Windows installer</a>
+        baixe o <a href="{{site.swc_installer}}">Software Carpentry Windows installer</a>
         e execute-o através de um clique duplo.
         <strong>Esse instalador requer uma conexão de internet ativa.</strong>
       </p>
@@ -487,12 +586,14 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     e ótima também para programação de propósito geral.
     Instalar todos os pacotes científicos individualmente
     pode ser um pouco difícil
-    e por isso recomendamos utilizar um instalador "tudo-em-um".
+    e por isso recomendamos utilizar um instalador "tudo-em-um"
+    chamado <a href="https://www.continuum.io/anaconda">Anaconda</a>.
   </p>
 
   <p>
     Independente de como você escolher instalá-lo,
-    <strong>certifique-se de instalar Python na versão 3.x e não a versão 2.x</strong>
+    <strong>certifique-se de instalar Python na versão 3.x</strong>
+    (por exemplo, 3.4 ou 3.5).
   </p>
 
   <p>
@@ -510,12 +611,13 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     <div class="col-md-4">
       <h4 id="python-windows">Windows</h4>
       <ul>
-        <li>
+        <li>Abra <a href="http://continuum.io/downloads">http://continuum.io/downloads</a> com seu navegador.</li>
           Baixe e instale <a href="http://continuum.io/anacondace.html">Anaconda</a>.
-        </li>
         <li>
           Baixe o instalado do Python 3.
-          Utilize todas as opções padrões de instalação
+        </li>
+        <li>
+          Instale Python 3 utilizando todas as opções padrões de instalação
           <em>exceto</em>
           <strong>Fazer Anaconda seu interpretador Python padrão</strong>.
         </li>
@@ -524,32 +626,25 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
     <div class="col-md-4">
       <h4 id="python-macosx">Mac OS X</h4>
       <ul>
+        <li>Abra <a href="http://continuum.io/downloads">http://continuum.io/downloads</a> com seu navegador.</li>
         <li>
-          Baixe e instale
-          <a href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>.
+          Baixe o instalador do Python 3.
         </li>
         <li>
-          Baixe o instalado do Python 3.
-          Utilize todas as opções padrões de instalação.
+          Instale Python 3 utilizando todas as opções padrões de instalação.
         </li>
       </ul>
     </div>
     <div class="col-md-4">
       <h4 id="python-linux">Linux</h4>
-      <p>
-        Recomendamos o instalador "todo-em-um"
-        <a href="http://continuum.io/downloads.html">Anaconda</a>.
+      <ol>
+        <li>Abra <a href="http://continuum.io/downloads">http://continuum.io/downloads</a> com seu navegador.</li>
+        <li>Baixe o instalado do Python 3.</li>
+        <li>Instale Python 3 usando todas as opções padrões de instalação.
         (A instalação requerer o uso do shell
         e se você não estiver confortável
         baixe o instalador
-        e vamos lhe ajudar a instalá-lo no workshop.)
-      </p>
-      <ol>
-        <li>
-          Baixe o instalador correspondente ao seu sistema operacional
-          e salve-o no seu diretório de usuário.
-          Baixe o instalado do Python 3.
-        </li>
+        e vamos lhe ajudar a instalá-lo no workshop.)</li>
         <li>
           Abra um terminal.
         </li>
@@ -571,11 +666,13 @@ eventbrite: # optional (delete this if not used, otherwise uncomment and provide
       </ol>
     </div>
   </div>
+<!--
   <p>
   Once you are done installing the software listed above,
   please go to <a href="setup/index.html">this page</a>,
   which has instructions on how to test that everything was installed correctly.
   </p>
+-->
 </div> <!-- End of 'Python' section. -->
 
 <div id="r"> <!-- Start of 'R' section. -->

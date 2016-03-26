@@ -4,7 +4,7 @@ This repository is [Software Carpentry](http://software-carpentry.org)'s
 template for creating websites for workshops.
 
 1.  Do *not* fork this repository directly on GitHub.
-    Instead, please follow the instructions below
+    Instead, please use GitHub's importer following the instructions [below](#creating-a-repository)
     to create a website repository for your workshop.
 
 2.  Please *do your work in your repository's `gh-pages` branch*,
@@ -47,7 +47,7 @@ template for creating websites for workshops.
 
 6.  At this point, you should have a page like this:
 
-    ![](http://software-carpentry.org/img/workshop-template/using-github-import.png)
+    ![](img/using-github-import.png?raw=true)
 
     You can now click "Begin Import".
     When the process is done,
@@ -60,17 +60,6 @@ If you experience a problem, please re-try;
 if the problem persists,
 please [get in touch](#getting-and-giving-help).
 
-To clone your new repository, use:
-
-~~~
-git clone -b gh-pages https://github.com/your_username/YYYY-MM-DD-site
-~~~
-
-This is needed because the imported repository doesn't have a `master` branch.
-
-**Note:** please do all of your work in your repository's `gh-pages` branch,
-since [GitHub automatically publishes that as a website](https://help.github.com/articles/creating-project-pages-manually/).
-
 ## Customizing Your Website
 
 1.  Go into your newly-created repository,
@@ -80,16 +69,27 @@ since [GitHub automatically publishes that as a website](https://help.github.com
     the repository's URL will be `https://github.com/gvwilson/2015-07-01-mistaktonic`.
 
 2.  Edit `index.html` to customize the list of instructors,
-    workshop venue,
-    etc.
-    You can do this in the browser by clicking on it in the file view
+    workshop venue, etc. 
+    You can do this in the browser by clicking on it in the file view on GitHub
     and then selecting the pencil icon in the menu bar:
 
-    ![](http://software-carpentry.org/img/workshop-template/edit-index-file-menu-bar.png)
+    ![](img/edit-index-file-menu-bar.png?raw=true)
+    
+    Editing hints are embedded in `index.html`,
+    and full instructions are in [CUSTOMIZATION.md](CUSTOMIZATION.md).
 
-    or you can clone the repository to your desktop,
-    edit `index.html` there,
-    and push your changes back to the repository.
+    > Alternatively, you can clone the repository to your desktop,
+    > edit `index.html` there,
+    > and push your changes back to the repository.
+    >
+    > ~~~
+    > git clone -b gh-pages https://github.com/your_username/YYYY-MM-DD-site
+    > ~~~
+    >
+    > This is needed because the imported repository doesn't have a `master` branch.
+    >
+    > **Note:** please do all of your work in your repository's `gh-pages` branch,
+    > since [GitHub automatically publishes that as a website](https://help.github.com/articles/creating-project-pages-manually/).
 
 3.  Edit `_config.yml` in the same way
     so that `workshop_repo` and `workshop_site`
@@ -97,44 +97,40 @@ since [GitHub automatically publishes that as a website](https://help.github.com
 
     Note: the URL for your website is determined automatically
     based on the URL for your repository.
-    If your repository is at `https://github.com/gvwilson/2015-07-01-mistaktonic`,
-    its GitHub Pages website is at `http://gvwilson.github.io/2015-07-01-miskatonic`.
+    If your repository is at `https://github.com/your_username/YYYY-MM-DD-site`,
+    its GitHub Pages website is at `http://your_username.github.io/YYYY-MM-DD-site`.
 
 4.  When you are done editing,
-    you can preview your website.
-    Again,
+    you can view your website:
     if your repository is `https://github.com/your_username/YYYY-MM-DD-site`,
     its website will be `http://your_username.github.io/YYYY-MM-DD-site`.
 
-Editing hints are embedded in `index.html`,
-and full instructions are in [CUSTOMIZATION.md](CUSTOMIZATION.md).
+Full instructions are available in [CUSTOMIZATION.md](CUSTOMIZATION.md).
 This [FAQ](FAQ.md) includes a few extra tips
 (additions are always welcome)
 and these notes on [the background and design](DESIGN.md) of this template may help as well.
 
+That's it.
+The following steps are only necessary if you want to run the website locally on your computer.
+
 ## Checking Your Changes
 
-No matter how you edit `index.html`, you should:
+1.  To check your changes on your desktop you need some softwares
+    described at [Installing Software session](#installing-software).
+    This may require some work to set up,
+    so feel free to preview by pushing to the website.
 
-1.  Check your changes by running `tools/check.py` at the command line
-    from the root directory of your repository.
+2.  For some links to work properly,
+    particularly the link to your workshop's Eventbrite registration page,
+    you must view `_site/index.html` using an HTTP server.
+    If you have Jekyll installed,
+    you can do this by running:
 
-2.  Preview your changes by running `tools/preview` and looking at `_site/index.html`.
-    To be able to preview your page locally,
-    you must install Ruby 1.9.3 or greater plus `github-pages`,
-    as described [below](#installing-software).
+    ~~~
+    $ jekyll server -d _site
+    ~~~
 
-For some links to work properly,
-particularly the link to your workshop's Eventbrite registration page,
-you must view `_site/index.html` using an HTTP server.
-If you have Jekyll installed,
-you can do this by running:
-
-~~~
-$ jekyll server -d _site
-~~~
-
-and going to http://localhost:4000.
+    and going to http://localhost:4000.
 
 ## Installing Software
 
@@ -147,32 +143,49 @@ you must install the software described below.
 > will update automatically, so you can check your changes on the live
 > site instead of locally.
 
-1.  Jekyll 1.0.3
+1.  Ruby 2.0 or greater
 
-    1. Check if Ruby is installed and find its version using command line:
+    On Debian/Ubuntu based machines you can install it using
 
-        ~~~
-        $  ruby -v
-        ~~~
+    ~~~
+    $ sudo apt-get install ruby2.0 ruby2.0-dev
+    ~~~
 
-        The following commands need a minimum version of 1.9.3.
+2.  NodeJS
 
-    2. Install `github-pages`:
+    On Debian/Ubuntu based machines you can install it using
 
-        ~~~
-        $ gem install github-pages
-        ~~~
+    ~~~
+    $ sudo apt-get install nodejs
+    ~~~
 
-        or if that doesn't work:
+3.  Jekyll
 
-        ~~~
-        $ gem install jekyll
-        $ gem install kramdown
-        ~~~
+    Install `github-pages`:
 
-        We use Kramdown to translate Markdown into HTML, instead of
-        the default Redcarpet, because Kramdown handles Markdown
-        inside HTML blocks.
+     ~~~
+     $ gem install github-pages
+     ~~~
+
+     or if that doesn't work:
+
+     ~~~
+     $ gem install jekyll
+     $ gem install kramdown
+     ~~~
+
+     We use Kramdown to translate Markdown into HTML, instead of
+     the default Redcarpet, because Kramdown handles Markdown
+     inside HTML blocks.
+
+    Note: you may need to specify the version of gem to use for installation
+    if you have multiple versions of Ruby installed.
+    For example for version 2.0 you could use:
+
+     ~~~
+     $ gem2.0 install github-pages
+     ~~~
+
 
 2.  The Python YAML module
 

@@ -5,7 +5,7 @@
 You must edit the `_config.yml` configuration file in the root directory of your workshop
 and change the URLS called `workshop_repo` and `workshop_site`
 to point to the repository for the lesson and its GitHub Pages site respectively.
-If the URL for the repository is `https://github.com/gvwilson/2015-07-01-mistaktonic`,
+If the URL for the repository is `https://github.com/gvwilson/2015-07-01-miskatonic`,
 the URL for the website will be `http://gvwilson.github.io/2015-07-01-miskatonic`.
 
 You should not need to modify any of the other values in `_config.yml`.
@@ -24,20 +24,23 @@ which must define the following values in its header:
 
 *   `venue` is the short name of the institution or group hosting the
     workshop, like "Euphoric State University".  It should *not*
-    include the address or other details, since this value is 
+    include the address or other details, since this value is
     displayed in a table on the main
     [Software Carpentry](http://software-carpentry.org) website.
 
 *   `address` is the workshop's address (including details like the
     room number). The address should be all on one line.
 
-*   `country` must be a hyphenated title-cased country name like
-    'United-States'.  This is used to look up flags for display in the
-    main web site.
+*   `country` must be a two-letter ISO-3166 code for the country in
+    which the workshop is going to take place, such as "fr" (for
+    France) or "nz" (for New Zealand) - see [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+    for a complete list.
 
 *   `language` is the language that will be used in the workshop.
-    It must be a
-    [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+    It must be an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+    Note that two-letter codes mean different things for countries
+    and languages: "ar" is Arabic when used for a language, but
+    Argentina when used for a country.
 
 *   `latlng` is the latitude and longitude of the workshop site (so we
     can put a pin on our map).  You can use
@@ -81,8 +84,8 @@ The header may optionally define the following:
 *   `etherpad` is the URL for the Etherpad for your workshop.  If you are
     not using an Etherpad, you can delete this line.
 
-* `eventbrite` is the multi-digit Eventbrite registration key.  If you
-    are using Eventbrite, the Software Carpentry administraotrs will
+*   `eventbrite` is the multi-digit Eventbrite registration key.  If you
+    are using Eventbrite, the Software Carpentry administrators will
     give this to you.  If you are using something else, you may delete
     this line.  Note: this value must be given as a string in double
     quotes, rather than as a number.
@@ -97,7 +100,12 @@ so that they show what you're actually planning to teach and when.
 You should delete the pieces of the `Setup` section
 related to software you will not be using in your workshop,
 so that learners don't spend time installing software they don't need.
-After you edit the `Setup` section, you should edit the installation test script.
+
+## Setup: Installation tests
+
+If you intend to use the installation-test scripts,
+uncomment the paragraph linking to `setup/index.html` in `index.html`
+and edit `setup/swc-installation-test-2.py` as described below.
 
 `swc-installation-test-1.py` is pretty simple, and just checks that
 the students have a recent enough version of Python installed that
@@ -124,3 +132,33 @@ packages.  If you don't want to support a particular package (e.g. if
 you have no Emacs experience and don't want to be responsible for
 students who show up with Emacs as their only editor), you can comment
 out that particular `or_dependency`.
+
+## Updating the repository
+
+If for some reason,
+such as the installation instructions having become disconnected
+with the current lesson material,
+you need to get changes from this repository
+into the clone of it with your workshop page,
+please follow the steps bellow:
+
+1.  Add the workshop-template repository as upstream:
+
+        $ git remote add upstream https://github.com/swcarpentry/workshop-template.git
+
+2.  Fetch the data from upstream repository (also know as the workshop-template
+    repository):
+
+        $ git fetch upstream
+
+3.  Merge the new changes:
+
+        $ git merge upstream/gh-pages
+
+4.  When get conflicts, solve it and
+
+        $ git commit -a
+
+5.  Push the changes to GitHub:
+
+        $ git push origin gh-pages
