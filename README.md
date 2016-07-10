@@ -32,9 +32,8 @@ template for creating websites for workshops.
 
 ## Creating a Repository
 
-1.  Go to [GitHub's importer][import].
-
-2.  Click on "Check the URL".  (GitHub won't import until you've done this.)
+1.  Go to [GitHub's importer][import]. 
+2.  Paste the url of this repo as the old repository to clone: https://github.com/swcarpentry/workshop-template
 
 3.  Select the owner for your new repository.
     (This will probably be you, but may instead be an organization you belong to.)
@@ -51,7 +50,8 @@ template for creating websites for workshops.
 
     You can now click "Begin Import".
     When the process is done,
-    you can click "Continue to repository" to visit your newly-created repository.
+    you will receive a message close to "Importing complete! Your new repository julie32/2015-07-01-miskatonic is ready."
+    and you can go to the new repository by clicking on the name.
 
 **Note:**
 some people have had intermittent errors during the import process,
